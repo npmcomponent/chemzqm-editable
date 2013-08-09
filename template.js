@@ -1,0 +1,1 @@
+module.exports = '<div class="editable">\n  <input type="text" />\n  <div class="group">\n    <button class="confirm">确定</button>\n    <button class="cancel">取消</button>\n  </div>\n</div>\n';

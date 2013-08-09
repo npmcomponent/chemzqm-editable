@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example of editable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="build/build.css">
+    <script src="build/build.js"></script>
+    <style>
+      body {
+        padding:100px;
+      }
+      #test {
+      }
+    </style>
+  </head>
+  <body>
+    <span id="test">test</span>
+
+    <script>
+      var Editable = require('editable');
+      var node = document.getElementById('test');
+      var ed = new Editable(node);
+      ed.on('change', function(v){
+        console.log(v);
+      })
+    </script>
+  </body>
+</html>
