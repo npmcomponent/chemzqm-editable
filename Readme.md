@@ -1,7 +1,7 @@
 
 # editable
 
-  
+  component for simple inline editing
 
 ## Installation
 
@@ -11,7 +11,17 @@
 
 ## API
 
+### new Editable(node)
 
+Create Editable instance
+
+### editable#remove
+
+Unregist the events
+
+### Event#change
+
+Emit the `change` event with the changed `value` of input
 
 ## License
 
