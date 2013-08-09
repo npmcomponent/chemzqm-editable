@@ -1,7 +1,7 @@
 {
   "name": "editable",
   "repo": "chemzqm/editable",
-  "description": "",
+  "description": "component for simple inline editing",
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
