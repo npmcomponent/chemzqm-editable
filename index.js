@@ -12,6 +12,7 @@ function Editable(node){
 Emitter(Editable.prototype);
 
 Editable.prototype.click = function() {
+  this.hide = false;
   var el = this.el = dom(template);
   var text = this.node.html();
   this.input = el.find('input');
@@ -27,6 +28,7 @@ Editable.prototype.click = function() {
 }
 
 Editable.prototype.cancel = function() {
+  this.hide = true;
   this.emit('hide');
   this.el.find('.confirm').off('click', this._confirm);
   this.el.find('.cancel').off('click', this._cancel);
@@ -44,6 +46,11 @@ Editable.prototype.confirm = function() {
 Editable.prototype.remove = function() {
   this.emit('remove');
   this.node.off('click', this._click);
+  if (!this.hide) {
+    this.el.find('.confirm').off('click', this._confirm);
+    this.el.find('.cancel').off('click', this._cancel);
+    this.el.remove();
+  }
 }
 
 module.exports = Editable;
