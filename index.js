@@ -1,6 +1,8 @@
 var dom = require('dom');
 var Emitter = require ('emitter');
 var template = require('./template');
+var keyname = require ('keyname');
+
 
 function Editable(node){
   this.node = dom(node);
@@ -23,6 +25,8 @@ Editable.prototype.click = function() {
   this.input.get(0).focus();
   this._cancel = this.cancel.bind(this);
   this._confirm = this.confirm.bind(this);
+  this._onkeydown = this.onkeydown.bind(this);
+  this.input.on('keydown', this._onkeydown);
   el.find('.confirm').on('click', this._confirm);
   el.find('.cancel').on('click', this._cancel);
 }
@@ -30,6 +34,7 @@ Editable.prototype.click = function() {
 Editable.prototype.cancel = function() {
   this.hide = true;
   this.emit('hide');
+  this.input.off('keydown', this._onkeydown);
   this.el.find('.confirm').off('click', this._confirm);
   this.el.find('.cancel').off('click', this._cancel);
   this.el.remove();
@@ -45,11 +50,16 @@ Editable.prototype.confirm = function() {
 
 Editable.prototype.remove = function() {
   this.emit('remove');
+  this.cancel();
   this.node.off('click', this._click);
-  if (!this.hide) {
-    this.el.find('.confirm').off('click', this._confirm);
-    this.el.find('.cancel').off('click', this._cancel);
-    this.el.remove();
+}
+
+Editable.prototype.onkeydown = function(e) {
+  switch(keyname(e.which)) {
+    case 'enter':
+      return this.confirm();
+    case 'esc':
+      return this.cancel();
   }
 }
 
