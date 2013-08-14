@@ -1,7 +1,8 @@
-
 # editable
 
   component for simple inline editing
+
+  With key bindings, `esc` for cancel `enter` for confirm
 
   [demo](http://chemzqm.github.io/editable/)
 
