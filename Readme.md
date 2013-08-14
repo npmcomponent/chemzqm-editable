@@ -12,6 +12,17 @@
 
     $ component install chemzqm/editable
 
+## Usage
+
+``` js
+var Editable = require('editable');
+var node = document.getElementById('test');
+var ed = new Editable(node);
+ed.on('change', function(v){
+  console.log(v);
+})
+```
+
 ## API
 
 ### new Editable(node)
