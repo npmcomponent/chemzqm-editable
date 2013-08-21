@@ -17,6 +17,7 @@ Editable.prototype.click = function() {
   this.hide = false;
   var el = this.el = dom(template);
   var text = this.node.html();
+  this.html = text;
   this.input = el.find('input');
   this.input.value(text);
   this.origin = text;
@@ -31,6 +32,21 @@ Editable.prototype.click = function() {
   dom(document).on('click', this._documentClick);
   this._onkeydown = this.onkeydown.bind(this);
   this.input.on('keydown', this._onkeydown);
+}
+
+Editable.prototype.reset = function() {
+  var v = this.html;
+  this.node.html(v);
+}
+
+Editable.prototype.value = function() {
+  var v = this.node.html();
+  return v;
+}
+
+Editable.prototype.limit = function(min, max) {
+  this.min = min;
+  this.max = max || 200;
 }
 
 Editable.prototype.documentClick = function(e) {
@@ -54,6 +70,12 @@ Editable.prototype.cancel = function() {
 
 Editable.prototype.confirm = function() {
   var v = this.input.value();
+  if (typeof this.min !== 'undefined') {
+    var len = v.length;
+    if (len < this.min || len > this.max) {
+      return this.cancel();
+    }
+  }
   this.node.html(v);
   this.emit('change', v);
   this.cancel();
