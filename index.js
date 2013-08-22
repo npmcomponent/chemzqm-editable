@@ -13,7 +13,8 @@ function Editable(node){
 
 Emitter(Editable.prototype);
 
-Editable.prototype.click = function() {
+Editable.prototype.click = function(e) {
+  e.stopPropagation();
   this.hide = false;
   var el = this.el = dom(template);
   var text = this.node.html();
