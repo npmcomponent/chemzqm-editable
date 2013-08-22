@@ -88,14 +88,17 @@
       ed.on('change', function(v){
         console.log(v);
       })
+      ed.on('range error', function(v){
+        console.log(v);
+      })
       var reset = document.getElementById('reset');
       reset.addEventListener('click', function(){
         ed.reset();
       });
       var value = document.getElementById('value');
       value.addEventListener('click', function(){
-          var v = ed.value();
-          console.log(v);
+        var v = ed.value();
+        console.log(v);
       });
     </script>
   </body>

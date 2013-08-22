@@ -74,7 +74,9 @@ Editable.prototype.confirm = function() {
   if (typeof this.min !== 'undefined') {
     var len = v.length;
     if (len < this.min || len > this.max) {
-      return this.cancel();
+      this.input.get(0).focus();
+      this.emit('range error', v);
+      return
     }
   }
   this.node.html(v);
