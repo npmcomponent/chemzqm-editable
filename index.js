@@ -52,6 +52,7 @@ Editable.prototype.limit = function(min, max) {
 
 Editable.prototype.documentClick = function(e) {
   var target = e.target;
+  if (target == this.input.get(0)) return;
   if (target == this.node.get(0)) return;
   if (target == this.confirmBtn) {
     return this.confirm();
