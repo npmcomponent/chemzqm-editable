@@ -1,6 +1,6 @@
 # editable
 
-  component for simple inline editing
+  Simple and tiny Edit in place for component
 
   With key bindings, `esc` for cancel `enter` for confirm
 
