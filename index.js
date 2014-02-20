@@ -1,7 +1,7 @@
-var dom = require('dom');
-var Emitter = require ('emitter');
+var dom = require('component-dom');
+var Emitter = require ('component-emitter');
 var template = require('./template');
-var keyname = require ('keyname');
+var keyname = require ('component-keyname');
 
 
 /**

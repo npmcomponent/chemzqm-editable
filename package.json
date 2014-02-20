@@ -1,0 +1,16 @@
+{
+  "name": "chemzqm-editable",
+  "description": "component for simple inline editing",
+  "version": "0.0.6",
+  "keywords": [],
+  "main": "index.js",
+  "styles": [
+    "style.css"
+  ],
+  "dependencies": {
+    "component-dom": "git://github.com/npmcomponent/component-dom.git",
+    "component-keyname": "git://github.com/npmcomponent/component-keyname.git",
+    "component-emitter": "git://github.com/npmcomponent/component-emitter.git"
+  },
+  "license": "MIT"
+}
